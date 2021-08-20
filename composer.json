@@ -3,9 +3,7 @@
     "description": "抛出异常",
     "autoload": {
         "psr-4": {
-            "App\\":"app/",
-            "Api\\Exception\\": "src/"
-            
+            "Lsg\\Exception\\": "src/"
         }
     },
     "authors": [
