@@ -28,6 +28,7 @@ class PackageApiExceptionServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/apiexception.php' => config_path('packagetest.php'), // 发布配置文件到 laravel 的config 下         ]);
+            __DIR__.'/../config/jsoncode.php' => config_path('jsoncode.php'), // 发布配置文件到 laravel 的config 下         
+        ]);
     }
 }
