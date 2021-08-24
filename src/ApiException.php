@@ -9,7 +9,13 @@ class ApiException extends Exception
 
     public function __construct($code, \Throwable $previous = null)
     {
-        parent::__construct(config('jsoncode.code')[(int) $code], $code, $previous);
+        if(is_numeric($code)){
+            parent::__construct(config('jsoncode.code')[(int) $code], $code, $previous);
+        }else if(is_string($code)){
+            parent::__construct($code, 400, $previous);
+        }else{
+            parent::__construct(config('jsoncode.code')[(int) $code], $code, $previous);
+        }
     }
 
     /**
