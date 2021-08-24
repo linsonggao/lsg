@@ -7,10 +7,14 @@ use Exception;
 class ApiException extends Exception
 {
 
-    public function __construct($code, \Throwable $previous = null)
+    public function __construct($code, $msg=null, \Throwable $previous = null)
     {
         if(is_numeric($code)){
-            parent::__construct(config('jsoncode.code')[(int) $code], $code, $previous);
+            if(!$msg){
+                parent::__construct(config('jsoncode.code')[(int) $code], $code, $previous);
+            }else{
+                parent::__construct($msg, $code, $previous);
+            }
         }else if(is_string($code)){
             parent::__construct($code, 400, $previous);
         }else{
